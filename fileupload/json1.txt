@@ -1,0 +1,1 @@
+{"username": "junil", "password": "1234", "name": "\uae40\uc900\uc77c", "email": "skjil1218@kakao.com", "hobby": ["\uace8\ud504", "\ucd95\uad6c", "\ub18d\uad6c"]}

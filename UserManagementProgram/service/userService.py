@@ -20,19 +20,25 @@ class UserService:
         return userList
 
     def login(self, username, password):
+
+        from UserManagementProgram.util.exception.usernameNotFoundError import UsernameNotFoundException
+        from UserManagementProgram.util.exception.passwordError import PasswordErrorException
+
         userEntity = self.loadUserByUsername(username)
+
         try:
             if userEntity == None:
-                from UserManagementProgram.util.exception.usernameNotFoundError import UsernameNotFoundException
                 raise UsernameNotFoundException("해당 사용자 이름은 존재하지 않습니다.")
             else:
                 if password != userEntity.password:
-                    print("비밀번호를 다시 확인해 주세요.")
+                    raise PasswordErrorException("비밀번호를 확인해 주세요.")
                     # PasswordErrorException
                 else:
                     print("로그인 성공")
         except UsernameNotFoundException as e:
             print("사용자 이름을 찾지 못함")
+        except PasswordErrorException as e:
+            print(e)
         except Exception as e:
             print(f"Error Message >> {e.__class__}:{e}")
 
